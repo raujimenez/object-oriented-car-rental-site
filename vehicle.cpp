@@ -70,8 +70,14 @@ std::string Vehicle::to_string() const
         vehicle_info += "SUV";
     else if (_body_style == Body_style::CROSSOVER)
         vehicle_info += "Crossover";
-    if(_is_rented){ vehicle_info += "\n\tRenter: " + _renter + "\n\t" + "Driver's License: " + _renter_dl + "\n\t" + "Phone: " + _renter_phone; }
-    else {vehicle_info += "\n\tNOT RENTED";}
+    if (_is_rented)
+    {
+        vehicle_info += "\n\tRenter: " + _renter + "\n\t" + "Driver's License: " + _renter_dl + "\n\t" + "Phone: " + _renter_phone;
+    }
+    else
+    {
+        vehicle_info += "\n\tNOT RENTED";
+    }
     return vehicle_info;
 }
 

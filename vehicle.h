@@ -25,7 +25,7 @@ public:
   std::string renter();
   std::string renter_dl();
   std::string renter_phone();
-  std::string to_string() const;  
+  std::string to_string() const;
   friend std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle);
 
 private:

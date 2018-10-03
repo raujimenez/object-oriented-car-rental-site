@@ -15,4 +15,4 @@ vehicle.o: vehicle.cpp *.h
 	${CXX} ${CXXFLAGS} -c vehicle.cpp
 
 clean:
-	rm -rf errors_* *.o test_vehicle
+	rm -rf errors_* *.o test_vehicle test_rental_site
