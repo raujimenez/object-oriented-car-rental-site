@@ -25,7 +25,7 @@ void Controller::execute_cmd(int command)
         while (valid_body_style)
         {
             std::cout << "Pick a body style:"
-                      << "\n\t(1)Sedan\t(2)Hatchback\n\t(3)Minivan\t(4)Truck\n\t(5)SUV\t(6)Crossover\n";
+                      << "\n\t(1)Sedan\t(2)Hatchback\n\t(3)Minivan\t(4)Truck\n\t(5)SUV\t\t(6)Crossover\n";
             std::cin >> body_choice;
             std::cin.ignore();
             switch (body_choice)
