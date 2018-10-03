@@ -20,10 +20,8 @@ void Controller::execute_cmd(int command)
         std::cin.ignore();
         std::cout << "Enter the make of the vehicle: ";
         getline(std::cin, make);
-        std::cin.ignore();
         std::cout << "Enter the model of the vehicle: ";
         getline(std::cin, model);
-        std::cin.ignore();
         while (valid_body_style)
         {
             std::cout << "Pick a body style:"
@@ -83,20 +81,17 @@ void Controller::execute_cmd(int command)
 
         std::cout << "Available Vehicles: " << std::endl;
         for (int available : returned_cars)
-            std::cout << "Vehicle [" << std::to_string(available) << "], ";
+            std::cout << "Vehicle [" << std::to_string(available+1) << "], ";
         std::cout << std::endl;
         std::cout << "Enter the vehicle slot number: ";
         std::cin >> vehicle_to_rent;
         std::cin.ignore();
         std::cout << "Enter renter's name: ";
         getline(std::cin, name);
-        std::cin.ignore();
         std::cout << "Enter renter's drivers license: ";
         getline(std::cin, dl);
-        std::cin.ignore();
         std::cout << "Enter renter's phone number: ";
         getline(std::cin, phone);
-        std::cin.ignore();
         _rental_site.rent_vehicle(vehicle_to_rent, name, dl, phone);
     }
     else if (command == 4)
@@ -111,7 +106,7 @@ void Controller::execute_cmd(int command)
         }
         std::cout << "Vehicles currently being rented:" << std::endl;
         for (int available : rented_cars)
-            std::cout << "Vehicle[" + std::to_string(available) + "], ";
+            std::cout << "Vehicle[" + std::to_string(available + 1) + "], ";
         std::cout << std::endl;
         std::cout << "Enter the number of the returned vehicle: ";
         std::cin >> vehicle_to_return;
