@@ -33,7 +33,8 @@ Vehicle::Vehicle(int year, std::string make, std::string model, Body_style body_
 }
 
 //rents a vehicle to a customer
-void Vehicle::rent_vehicle(std::string renter_name, std::string renter_driver_license, std::string renter_phone){
+void Vehicle::rent_vehicle(std::string renter_name, std::string renter_driver_license, std::string renter_phone)
+{
     _renter = renter_name;
     _renter_dl = renter_driver_license;
     _renter_phone = renter_phone;
@@ -41,10 +42,7 @@ void Vehicle::rent_vehicle(std::string renter_name, std::string renter_driver_li
 }
 
 //customer returns vehicle therefore vehicle is not being rented
-void Vehicle::return_vehicle()
-{
-    _is_rented = false;
-}
+void Vehicle::return_vehicle() { _is_rented = false; }
 
 //getter functions
 bool Vehicle::is_rented() { return _is_rented; }
@@ -72,6 +70,8 @@ std::string Vehicle::to_string() const
         vehicle_info += "SUV";
     else if (_body_style == Body_style::CROSSOVER)
         vehicle_info += "Crossover";
+    if(_is_rented){ vehicle_info += "\n\tRenter: " + _renter + "\n\t" + "Driver's License: " + _renter_dl + "\n\t" + "Phone: " + _renter_phone; }
+    else {vehicle_info += "\n\tNOT RENTED";}
     return vehicle_info;
 }
 
