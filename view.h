@@ -3,14 +3,15 @@
 #include "rental_site.h"
 class View
 {
-  public:
-    View(Rental_Site rental_site);
-    std::string main_menu();
-    std::vector<std::string> list_of_vehicles();
-    std::string help();
+public:
+  View(Rental_Site rental_site);
+  std::string main_menu();
+  std::vector<std::string> list_of_vehicles();
+  std::string help();
+  Rental_Site rental_site();
 
-  private:
-    Rental_Site _rental_site;
+private:
+  Rental_Site _rental_site;
 };
 
 #endif

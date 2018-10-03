@@ -25,15 +25,15 @@ std::string View::main_menu()
 }
 
 std::vector<std::string> View::list_of_vehicles()
-{        
+{
     std::ostringstream ost;
     std::vector<std::string> list;
-    if(_rental_site.vehicles().size() == 0)
+    if (_rental_site.vehicles().size() == 0)
     {
         list.push_back("Empty lot :(");
         return list;
-    }    
-    for(int i = 0; i < _rental_site.vehicles().size(); i++)
+    }
+    for (int i = 0; i < _rental_site.vehicles().size(); i++)
     {
         ost << _rental_site.vehicles()[i];
         list.push_back(ost.str());
@@ -42,4 +42,6 @@ std::vector<std::string> View::list_of_vehicles()
     return list;
 }
 
-std::string View::help(){ return ""; }
+std::string View::help() { return ""; } //TODO figure out what to put here
+
+Rental_Site View::rental_site() { return _rental_site; }
