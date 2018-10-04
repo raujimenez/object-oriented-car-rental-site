@@ -33,6 +33,6 @@ private:
   int _year;
   Body_style _body_style;
   bool _is_rented;
-  Renter &_renter;
+  Renter& _renter;
 };
 #endif
