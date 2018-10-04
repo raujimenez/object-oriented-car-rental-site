@@ -42,6 +42,17 @@ std::vector<std::string> View::list_of_vehicles()
     return list;
 }
 
-std::string View::help() { return ""; } //TODO figure out what to put here
+std::string View::help()
+{
+    std::ostringstream ost;
+    ost << "This program is 4 function vehicle rental place" << std::endl
+        << "\tTo add vehicles input 1 in the keyboard and then hit enter" << std::endl
+        << "\tTo list all vehicles input 2 in they keyboard and then hit enter"<< std::endl
+        << "\tTo rent Vehicles out to a customer input 3 in the keyboard and then hit enter" << std::endl
+        << "\tTo check a vehicle back in to the lot input 4 in the keybaord and then hit enter"<< std::endl
+        << "\tThe program will run until you are prompted to input another command, in this case you can input 0 and then hit enter to stop program" << std::endl 
+        << "\tIMPORTANT: You can input a command after each menu is displayed" << std::endl;
+    return ost.str();
+} //TODO figure out what to put here
 
 Rental_Site View::rental_site() { return _rental_site; }

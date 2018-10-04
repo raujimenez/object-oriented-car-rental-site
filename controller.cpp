@@ -115,7 +115,7 @@ void Controller::execute_cmd(int command)
     }
     else if (command == 9)
     {
-        view.help();
+        std::cout << view.help() << std::endl;
     }
     else if (command == 999999)
     {
