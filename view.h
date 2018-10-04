@@ -7,6 +7,7 @@ public:
   View(Rental_Site rental_site);
   std::string main_menu();
   std::vector<std::string> list_of_vehicles();
+  std::vector<std::string> list_of_renters();
   std::string help();
   Rental_Site rental_site();
 

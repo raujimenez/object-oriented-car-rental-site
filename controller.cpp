@@ -83,16 +83,11 @@ void Controller::execute_cmd(int command)
         for (int available : returned_cars)
             std::cout << "Vehicle [" << std::to_string(available+1) << "], ";
         std::cout << std::endl;
-        std::cout << "Enter the vehicle slot number: ";
-        std::cin >> vehicle_to_rent;
-        std::cin.ignore();
-        std::cout << "Enter renter's name: ";
-        getline(std::cin, name);
-        std::cout << "Enter renter's drivers license: ";
-        getline(std::cin, dl);
-        std::cout << "Enter renter's phone number: ";
-        getline(std::cin, phone);
-        _rental_site.rent_vehicle(vehicle_to_rent, name, dl, phone);
+        for(std::string str : view.list_of_renters())
+        std::cout << str;
+        int renter_val;
+        std::cout << "Enter the renter: "; std::cin >> renter_val; std::cin.ignore();
+        _rental_site.rent_vehicle(vehicle_to_rent, _rental_site.renters()[renter_val-1]);
     }
     else if (command == 4)
     {
@@ -112,6 +107,22 @@ void Controller::execute_cmd(int command)
         std::cin >> vehicle_to_return;
         std::cin.ignore();
         _rental_site.return_vehicle(vehicle_to_return);
+    }
+    else if(command == 5)
+    {
+        std::string name, dl, phone;            
+        std::cout << "Enter renter's name: ";
+        getline(std::cin, name);
+        std::cout << "Enter renter's drivers license: ";
+        getline(std::cin, dl);
+        std::cout << "Enter renter's phone number: ";
+        getline(std::cin, phone);
+        _rental_site.add_renter(Renter(name,dl,phone));
+    }
+    else if(command == 6)
+    {
+       for(std::string str : view.list_of_renters())
+        std::cout << str;
     }
     else if (command == 9)
     {

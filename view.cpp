@@ -1,5 +1,6 @@
 #include "view.h"
 #include <sstream>
+#include <iomanip>
 View::View(Rental_Site rental_site) : _rental_site{rental_site} {}
 
 std::string View::main_menu()
@@ -9,12 +10,12 @@ std::string View::main_menu()
         << "        Raul's Rental Vehicle Management System        " << std::endl
         << "=======================================================" << std::endl
         << std::endl
-        << "Vehicles" << std::endl
-        << "-----------------" << std::endl
-        << "(1) Add Vehicle" << std::endl
-        << "(2) List All Vehicles" << std::endl
-        << "(3) Rent Vehicle" << std::endl
-        << "(4) Return Vehicle" << std::endl
+        << "Vehicles                              Renters          " << std::endl
+        << "-----------------                     --------         " << std::endl
+        << "(1) Add Vehicle                    (5) Add Renter      " << std::endl
+        << "(2) List All Vehicles              (6) List Renters    " << std::endl
+        << "(3) Rent Vehicle                                       " << std::endl
+        << "(4) Return Vehicle                                     " << std::endl
         << std::endl
         << "Utility" << std::endl
         << "-----------------" << std::endl
@@ -42,6 +43,24 @@ std::vector<std::string> View::list_of_vehicles()
     return list;
 }
 
+std::vector<std::string> View::list_of_renters()
+{
+    std::ostringstream ost;
+    std::vector<std::string> list;
+    ost <<" " << std::setw(18) << "Renter's Name" << std::setw(18) << "Drivers License"<< std::setw(18) << "Phone Number" << std::endl
+        <<" " <<std::setw(18) << "-----------" << std::setw(18) << "----------------"  <<std::setw(18)<< "------------"
+              << std::endl;
+    list.push_back(ost.str());
+    ost.str("");
+    for(int i = 0; i < _rental_site.renters().size();i++)
+    {
+        ost << std::to_string(i+1) <<_rental_site.renters()[i] << std::endl;
+        list.push_back(ost.str());
+        ost.str("");
+    }
+    return list;
+}
+
 std::string View::help()
 {
     std::ostringstream ost;
@@ -50,6 +69,8 @@ std::string View::help()
         << "\tTo list all vehicles input 2 in they keyboard and then hit enter"<< std::endl
         << "\tTo rent Vehicles out to a customer input 3 in the keyboard and then hit enter" << std::endl
         << "\tTo check a vehicle back in to the lot input 4 in the keybaord and then hit enter"<< std::endl
+        << "\tTo Add a renter to the database input 5 and hit enter" << std::endl
+        << "\tTo See all of the renter's in database input 6 and hit enter" << std::endl
         << "\tThe program will run until you are prompted to input another command, in this case you can input 0 and then hit enter to stop program" << std::endl 
         << "\tIMPORTANT: You can input a command after each menu is displayed" << std::endl;
     return ost.str();

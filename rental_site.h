@@ -6,7 +6,8 @@ class Rental_Site
 {
   public:
     void add_vehicle(Vehicle vehicle);
-    void rent_vehicle(int vehicle, std::string renter_name, std::string renter_driver_license, std::string renter_phone);
+    void add_renter(Renter renter);
+    void rent_vehicle(int vehicle, Renter renter);
     void return_vehicle(int vehicle);
     std::vector<Vehicle> vehicles();
     std::vector<Renter> renters();
