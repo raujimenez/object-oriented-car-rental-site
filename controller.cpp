@@ -83,8 +83,10 @@ void Controller::execute_cmd(int command)
         for (int available : returned_cars)
             std::cout << "Vehicle [" << std::to_string(available+1) << "], ";
         std::cout << std::endl;
+        std::cout << "Enter the vehicle: "; std::cin >> vehicle_to_rent; std::cin.ignore();
+        std::cout << std::endl;
         for(std::string str : view.list_of_renters())
-        std::cout << str;
+            std::cout << str;
         int renter_val;
         std::cout << "Enter the renter: "; std::cin >> renter_val; std::cin.ignore();
         _rental_site.rent_vehicle(vehicle_to_rent, _rental_site.renters()[renter_val-1]);

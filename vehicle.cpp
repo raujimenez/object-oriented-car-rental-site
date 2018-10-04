@@ -33,9 +33,9 @@ Vehicle::Vehicle(int year, std::string make, std::string model, Body_style body_
 }
 
 //rents a vehicle to a customer
-void Vehicle::rent_vehicle(std::string renter_name, std::string renter_driver_license, std::string renter_phone)
+void Vehicle::rent_vehicle(Renter renter)
 {
-    _renter = Renter(renter_name, renter_driver_license, renter_phone);
+    _renter = renter;
     _is_rented = true;
 }
 

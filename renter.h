@@ -4,6 +4,7 @@
 class Renter
 {
   public:
+    Renter();
     Renter(std::string name, std::string dl, std::string phone);
     std::string to_string()const;
 

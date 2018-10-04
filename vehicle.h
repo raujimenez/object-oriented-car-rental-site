@@ -16,7 +16,7 @@ class Vehicle
 {
 public:
   Vehicle(int year, std::string make, std::string model, Body_style body_style);
-  void rent_vehicle(std::string renter_name, std::string renter_driver_license, std::string renter_phone);
+  void rent_vehicle(Renter renter);
   Renter renter();
   void return_vehicle();
   std::string make();
@@ -33,6 +33,6 @@ private:
   int _year;
   Body_style _body_style;
   bool _is_rented;
-  Renter& _renter;
+  Renter _renter;
 };
 #endif

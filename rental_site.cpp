@@ -10,7 +10,7 @@ void Rental_Site::rent_vehicle(int vehicle, Renter renter)
         throw std::runtime_error("Quantity Error: Attempted to rent vehicle " + std::to_string(vehicle) + ", but you only have " + std::to_string(_vehicles.size()) + " vehicles.");
     else if (vehicle < 1)
         throw std::runtime_error("Quantity Error: Attempted to access a vehicle at index " + std::to_string(vehicle) + " but vehicle counting begins at 1.");
-    _vehicles[vehicle - 1].rent_vehicle(renter.name(), renter.dl(), renter.phone());
+    _vehicles[vehicle - 1].rent_vehicle(renter);
 }
 
 //counting begins at 1 for customer ease of use

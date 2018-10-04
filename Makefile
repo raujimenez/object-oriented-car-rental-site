@@ -1,6 +1,6 @@
 CXXFLAGS += --std=c++17
 
-main: main.o controller.o view.o rental_site.o vehicle.o
+main: main.o controller.o view.o rental_site.o vehicle.o renter.o
 	${CXX} ${CXXFLAGS} -o main main.o controller.o view.o rental_site.o vehicle.o renter.o
 
 test: test_vehicle test_rental_site test_view test_controller
@@ -29,7 +29,7 @@ rental_site.o: rental_site.cpp *.h
 vehicle.o: vehicle.cpp *.h
 	${CXX} ${CXXFLAGS} -c vehicle.cpp
 renter.o: renter.cpp *.h
-	${CXX} ${CXXFLAGS} -c renters.cpp
+	${CXX} ${CXXFLAGS} -c renter.cpp
 
 clean:
 	rm -rf errors_* *.o test_vehicle test_rental_site test_view test_controller main expected.txt
