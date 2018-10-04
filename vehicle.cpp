@@ -35,9 +35,7 @@ Vehicle::Vehicle(int year, std::string make, std::string model, Body_style body_
 //rents a vehicle to a customer
 void Vehicle::rent_vehicle(std::string renter_name, std::string renter_driver_license, std::string renter_phone)
 {
-    _renter = renter_name;
-    _renter_dl = renter_driver_license;
-    _renter_phone = renter_phone;
+    _renter = Renter(renter_name, renter_driver_license, renter_phone);
     _is_rented = true;
 }
 
@@ -46,14 +44,11 @@ void Vehicle::return_vehicle() { _is_rented = false; }
 
 //getter functions
 bool Vehicle::is_rented() { return _is_rented; }
-std::string Vehicle::renter() { return _renter; }
-std::string Vehicle::renter_dl() { return _renter_dl; }
-std::string Vehicle::renter_phone() { return _renter_phone; }
 std::string Vehicle::make() { return _make; }
 std::string Vehicle::model() { return _model; }
 int Vehicle::year() { return _year; }
 Body_style Vehicle::body_style() { return _body_style; }
-
+Renter Vehicle::renter() { return _renter; }
 //streaming functions
 std::string Vehicle::to_string() const
 {
@@ -72,7 +67,7 @@ std::string Vehicle::to_string() const
         vehicle_info += "Crossover";
     if (_is_rented)
     {
-        vehicle_info += "\n\tRenter: " + _renter + "\n\t" + "Driver's License: " + _renter_dl + "\n\t" + "Phone: " + _renter_phone;
+        vehicle_info += "\n\tRenter: " + _renter.name() + "\n\t" + "Driver's License: " + _renter.dl() + "\n\t" + "Phone: " + _renter.phone();
     }
     else
     {

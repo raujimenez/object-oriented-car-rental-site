@@ -9,8 +9,9 @@ class Rental_Site
     void rent_vehicle(int vehicle, std::string renter_name, std::string renter_driver_license, std::string renter_phone);
     void return_vehicle(int vehicle);
     std::vector<Vehicle> vehicles();
-
+    std::vector<Renter> _renters();
   private:
     std::vector<Vehicle> _vehicles;
+    std::vector<Renter> _renters;
 };
 #endif

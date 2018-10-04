@@ -24,3 +24,4 @@ void Rental_Site::return_vehicle(int vehicle)
 }
 
 std::vector<Vehicle> Rental_Site::vehicles() { return _vehicles; }
+std::vector<Renter> _renters(){ return _renters; };
