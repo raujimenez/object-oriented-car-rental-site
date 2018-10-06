@@ -10,9 +10,9 @@ int main()
     try
     {
         Vehicle mycar_1{Vehicle(2010, "Nissan", "Altima 2.5 S", Body_style::SEDAN)};
-        mycar_1.rent_vehicle("Jose Ramirez", "1012030320", "123-456-7890");
+        mycar_1.rent_vehicle(Renter("Jose Ramirez", "1012030320", "123-456-7890"));
         mycar_1.return_vehicle();
-        mycar_1.rent_vehicle("Maria Nieto", "21908301283", "978-654-3210");
+        mycar_1.rent_vehicle(Renter("Maria Nieto", "21908301283", "978-654-3210"));
         std::cerr << "testing output of operator overloading: " << mycar_1 << std::endl;
         mycar_1.return_vehicle();
         std::cerr << "testing output of operator overloading: " << mycar_1 << std::endl;
