@@ -7,8 +7,10 @@ int main()
     int cmd;
     try
     {
-        cmd = 0;
+        cmd = 5;
         cont.execute_cmd(cmd);
+        cont.execute_cmd(cmd);
+        cont.execute_cmd(6);
     } 
     catch (std::exception& e)
     {
@@ -17,6 +19,10 @@ int main()
     try
     {
         cmd = 1;
+        cont.execute_cmd(cmd);
+        cont.execute_cmd(cmd);
+        cont.execute_cmd(cmd);
+        cont.execute_cmd(cmd);
         cont.execute_cmd(cmd);
     } 
     catch (std::exception& e)
@@ -54,7 +60,7 @@ int main()
     }
     try
     {
-        cmd = 7;
+        cmd = 9;
         cont.execute_cmd(cmd);
     } 
     catch (std::exception& e)
