@@ -15,17 +15,16 @@ void Controller::execute_cmd(int command)
         bool valid_body_style = true;
         std::string make, model;
         Body_style body_style;
-        std::cout << "Enter the year of the vehicle: ";
+        std::string get_year = "Enter the year of the vehicle: ";
         std::cin >> year;
         std::cin.ignore();
-        std::cout << "Enter the make of the vehicle: ";
+        std::string get_make = "Enter the make of the vehicle: ";
         getline(std::cin, make);
-        std::cout << "Enter the model of the vehicle: ";
+        std::string get_model = "Enter the model of the vehicle: ";
         getline(std::cin, model);
         while (valid_body_style)
         {
-            std::cout << "Pick a body style:"
-                      << "\n\t(1)Sedan\t(2)Hatchback\n\t(3)Minivan\t(4)Truck\n\t(5)SUV\t\t(6)Crossover\n";
+            std::string get_body = "Pick a body style:\n\t(1)Sedan\t(2)Hatchback\n\t(3)Minivan\t(4)Truck\n\t(5)SUV\t\t(6)Crossover\n";
             std::cin >> body_choice;
             std::cin.ignore();
             switch (body_choice)
@@ -55,7 +54,7 @@ void Controller::execute_cmd(int command)
                 valid_body_style = false;
                 break;
             default:
-                std::cout << "Try again, not valid." << std::endl;
+                std::string invalid_model = "Try again, not valid.\n";
                 break;
             }
         }
@@ -138,6 +137,19 @@ void Controller::execute_cmd(int command)
     {
         std::cout << "invalid. Try a valid input" << std::endl;
     }
+}
+
+void Controller::cli()
+{
+    int cmd;
+    do
+    {
+        execute_cmd(999999); // 999999 is a special value which is used to display main menu
+        std::cout << "Enter a command: ";
+        std::cin >> cmd; std::cin.ignore();
+        std::cout << std::endl;
+        execute_cmd(cmd);
+    } while (cmd != 0);
 }
 
 Rental_Site Controller::rental_site() { return _rental_site; }

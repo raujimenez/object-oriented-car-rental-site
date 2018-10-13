@@ -1,7 +1,8 @@
 CXXFLAGS += --std=c++17
+GTKFLAGS += `/usr/bin/pkg-config gtkmm-3.0 --cflags --lib`
 
-main: main.o controller.o view.o rental_site.o vehicle.o renter.o
-	${CXX} ${CXXFLAGS} -o main main.o controller.o view.o rental_site.o vehicle.o renter.o
+main: main.o controller.o view.o rental_site.o vehicle.o renter.o 
+	${CXX} ${CXXFLAGS} -o main main.o controller.o view.o rental_site.o vehicle.o renter.o ${GTKFLAGS}
 
 test: test_vehicle test_rental_site test_view test_controller
 	@./test_vehicle 2> errors_vehicle.txt 

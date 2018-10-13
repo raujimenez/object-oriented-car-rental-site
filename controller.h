@@ -2,10 +2,12 @@
 #define __CONTROLLER_H
 #include "rental_site.h"
 
+
 class Controller
 {
   public:
     void execute_cmd(int command);
+    void cli();
     Rental_Site rental_site();
 
   private:
