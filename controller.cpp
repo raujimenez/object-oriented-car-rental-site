@@ -83,10 +83,12 @@ void Controller::execute_cmd(int command)
     }
     else if (command == 2)
     {
-        std::ostringstream ost; int i = 0;
-        ost << "LIST OF VEHICLES:" << std::endl << std::endl;
+        std::ostringstream ost;
+        int i = 0;
+        ost << "LIST OF VEHICLES:" << std::endl
+            << std::endl;
         for (Vehicle vehicle : _rental_site.vehicles())
-            ost << std::to_string(i++) << ") " <<vehicle << std::endl;
+            ost << std::to_string(i++) << ") " << vehicle << std::endl;
         Gtk::MessageDialog *msg_dialog = new Gtk::MessageDialog{ost.str()};
         msg_dialog->run();
         msg_dialog->close();

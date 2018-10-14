@@ -6,13 +6,13 @@
 
 class Controller
 {
-  public:
-    void execute_cmd(int command);
-    void cli();
-    Rental_Site rental_site();
+public:
+  void execute_cmd(int command);
+  void cli();
+  Rental_Site rental_site();
 
-  private:
-    Rental_Site _rental_site;
+private:
+  Rental_Site _rental_site;
 };
 
 #endif

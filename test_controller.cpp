@@ -5,6 +5,13 @@ int main(int argc, char *argv[])
 {
     Gtk::Main kit(argc, argv);
     Controller cont;
-    cont.execute_cmd(0);
+    try
+    {
+        cont.cli();
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
     return 0;
 }
