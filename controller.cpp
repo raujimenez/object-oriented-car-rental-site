@@ -6,8 +6,12 @@ void Controller::execute_cmd(int command)
     View view{View(_rental_site)};
     if (command == 0)
     {
-        std::cout << "Exiting..." << std::endl;
-        return;
+        std::ostringstream ost;
+        ost << "Exiting..." << std::endl;
+        Gtk::MessageDialog *dialog = new Gtk::MessageDialog(ost.str());
+        dialog->run();
+        dialog->close();
+        delete dialog;
     }
     else if (command == 1)
     {
@@ -16,11 +20,16 @@ void Controller::execute_cmd(int command)
         std::string make, model;
         Body_style body_style;
         const std::string get_year = "Enter the year of the vehicle: ";
+
         year = std::stoi(Dialogs::input(get_year));
+
         const std::string get_make = "Enter the make of the vehicle: ";
-        make  = Dialogs::input(get_make);
+
+        make = Dialogs::input(get_make);
+
         const std::string get_model = "Enter the model of the vehicle: ";
         model = Dialogs::input(get_model);
+
         while (valid_body_style)
         {
             const std::string get_body = "Pick a body style:\n\t(1)Sedan\t(2)Hatchback\n\t(3)Minivan\t(4)Truck\n\t(5)SUV\t\t(6)Crossover\n";
@@ -52,21 +61,36 @@ void Controller::execute_cmd(int command)
                 valid_body_style = false;
                 break;
             default:
-                Gtk::MessageDialog *dialog = new Gtk::MessageDialog{"Try again, not valid."};
+                Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Try again, not valid.");
+                dialog->run();
+                dialog->close();
+                delete dialog;
                 break;
             }
         }
-        Vehicle vehicle_to_add = Vehicle(year, make, model, body_style);
-        _rental_site.add_vehicle(vehicle_to_add);
+        try
+        {
+            Vehicle vehicle_to_add = Vehicle(year, make, model, body_style);
+            _rental_site.add_vehicle(vehicle_to_add);
+        }
+        catch (std::exception &e)
+        {
+            Gtk::MessageDialog *err = new Gtk::MessageDialog(e.what());
+            err->run();
+            err->close();
+            delete err;
+        }
     }
     else if (command == 2)
     {
-        std::ostringstream ost;
+        std::ostringstream ost; int i = 0;
         ost << "LIST OF VEHICLES:" << std::endl << std::endl;
         for (Vehicle vehicle : _rental_site.vehicles())
-            ost << vehicle << std::endl;
+            ost << std::to_string(i++) << ") " <<vehicle << std::endl;
         Gtk::MessageDialog *msg_dialog = new Gtk::MessageDialog{ost.str()};
         msg_dialog->run();
+        msg_dialog->close();
+        delete msg_dialog;
     }
     else if (command == 3)
     {
@@ -83,16 +107,28 @@ void Controller::execute_cmd(int command)
 
         ost << "Available Vehicles: " << std::endl;
         for (int available : returned_cars)
-            ost << "Vehicle [" << std::to_string(available+1) << "], ";
+            ost << std::to_string(available + 1) << ") " << _rental_site.vehicles()[available] << std::endl;
         ost << std::endl;
-        ost << "Enter the vehicle: "; std::cin >> vehicle_to_rent; std::cin.ignore();
-        ost << std::endl;
-        for(std::string str : view.list_of_renters())
+        ost << "Enter the vehicle: ";
+        vehicle_to_rent = std::stoi(Dialogs::input(ost.str()));
+        ost.str("");
+        for (std::string str : view.list_of_renters())
             ost << str;
         int renter_val;
         ost << "Enter the renter: ";
         renter_val = std::stoi(Dialogs::input(ost.str()));
-        _rental_site.rent_vehicle(vehicle_to_rent, _rental_site.renters()[renter_val-1]);
+
+        try
+        {
+            _rental_site.rent_vehicle(vehicle_to_rent, _rental_site.renters()[renter_val - 1]);
+        }
+        catch (std::exception &e)
+        {
+            Gtk::MessageDialog *err = new Gtk::MessageDialog(e.what());
+            err->run();
+            err->close();
+            delete err;
+        }
     }
     else if (command == 4)
     {
@@ -107,43 +143,76 @@ void Controller::execute_cmd(int command)
         std::ostringstream ost;
         ost << "Vehicles currently being rented:\n";
         for (int available : rented_cars)
-            ost << "Vehicle[" + std::to_string(available + 1) + "], ";
-        ost << std::endl << std::endl << "Enter the number of the returned vehicle: ";
+            ost << std::to_string(available + 1) << ") " << _rental_site.vehicles()[available] << std::endl;
+        ost << std::endl
+            << std::endl
+            << "Enter the number of the returned vehicle: ";
         vehicle_to_return = std::stoi(Dialogs::input(ost.str()));
-        _rental_site.return_vehicle(vehicle_to_return);
+
+        try
+        {
+            _rental_site.return_vehicle(vehicle_to_return);
+        }
+        catch (std::exception &e)
+        {
+            Gtk::MessageDialog *err = new Gtk::MessageDialog(e.what());
+            err->run();
+            err->close();
+            delete err;
+        }
     }
-    else if(command == 5)
+    else if (command == 5)
     {
-        std::string name, dl, phone;            
-        const std::string get_name =  "Enter renter's name: ";
+        std::string name, dl, phone;
+        const std::string get_name = "Enter renter's name: ";
         name = Dialogs::input(get_name);
+
         const std::string get_dl = "Enter renter's drivers license: ";
+
         dl = Dialogs::input(get_dl);
+
         const std::string get_phone = "Enter renter's phone number: ";
         phone = Dialogs::input(get_phone);
-        _rental_site.add_renter(Renter(name,dl,phone));
+
+        try
+        {
+            _rental_site.add_renter(Renter(name, dl, phone));
+        }
+        catch (std::exception &e)
+        {
+            Gtk::MessageDialog *err = new Gtk::MessageDialog(e.what());
+            err->run();
+            err->close();
+            delete err;
+        }
     }
-    else if(command == 6)
+    else if (command == 6)
     {
         std::ostringstream ost;
-        for(std::string str : view.list_of_renters())
+        for (std::string str : view.list_of_renters())
             ost << str;
         Gtk::MessageDialog *renters_dialog = new Gtk::MessageDialog(ost.str());
         renters_dialog->run();
+        renters_dialog->close();
+        delete renters_dialog;
     }
     else if (command == 9)
     {
         Gtk::MessageDialog *help_dialog = new Gtk::MessageDialog(view.help());
         help_dialog->run();
+        help_dialog->close();
+        delete help_dialog;
     }
     else
     {
         Gtk::MessageDialog *error_dialog = new Gtk::MessageDialog("invalid. Try a valid input");
         error_dialog->run();
+        error_dialog->close();
+        delete error_dialog;
     }
 }
 
-void Controller::cli(int argc, char *argv[])
+void Controller::cli()
 {
     View view{View(_rental_site)};
     int cmd = 1;
@@ -152,7 +221,6 @@ void Controller::cli(int argc, char *argv[])
         cmd = std::stoi(Dialogs::input(view.main_menu()));
         execute_cmd(cmd);
     } while (cmd != 0);
-
 }
 
 Rental_Site Controller::rental_site() { return _rental_site; }

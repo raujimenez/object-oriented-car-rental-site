@@ -5,6 +5,6 @@ int main(int argc, char *argv[])
 {
     Gtk::Main kit(argc, argv);
     Controller cont;
-    cont.cli(argc, argv);
+    cont.cli();
     return 0;
 }

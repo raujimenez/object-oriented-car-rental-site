@@ -8,7 +8,7 @@ class Controller
 {
   public:
     void execute_cmd(int command);
-    void cli(int argc, char *argv[]);
+    void cli();
     Rental_Site rental_site();
 
   private:

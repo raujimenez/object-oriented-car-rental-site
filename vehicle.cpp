@@ -8,7 +8,7 @@ class Vehicle_not_made_yet : public std::exception
   public:
     const char *what() const noexcept
     {
-        return "year: Vehicle was created in future.";
+        return "year: Vehicle was created in future.\n Try again.";
     }
 };
 
@@ -17,7 +17,7 @@ class Vehicle_not_invented : public std::exception
   public:
     const char *what() const noexcept
     {
-        return "year: Vehicle was could not exist. 1885 was the first vehicle created by Benz.";
+        return "year: Vehicle was could not exist. 1885 was the first vehicle created by Benz.\nTry again.";
     }
 };
 
