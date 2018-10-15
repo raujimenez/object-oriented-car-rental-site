@@ -11,8 +11,8 @@ std::string View::main_menu()
         << "=======================================================" << std::endl
         << std::endl
         << "Vehicles                              Renters          " << std::endl
-        << "-----------------                     --------         " << std::endl
-        << "(1) Add Vehicle                     (5) Add Renter      " << std::endl
+        << "-----------------                     ----------------" << std::endl
+        << "(1) Add Vehicle                      (5) Add Renter      " << std::endl
         << "(2) List All Vehicles              (6) List Renters    " << std::endl
         << "(3) Rent Vehicle                                       " << std::endl
         << "(4) Return Vehicle                                     " << std::endl
@@ -48,7 +48,7 @@ std::vector<std::string> View::list_of_renters()
     std::ostringstream ost;
     std::vector<std::string> list;
     ost << " " << std::setw(18) << "Name" << std::setw(18) << "License #" << std::setw(18) << "Phone #" << std::endl
-        << " " << std::setw(18) << "----------------  " << std::setw(18) << "----------------" << std::setw(18) << "      --------------"
+        << "         " << std::setw(18) << "----------------" << std::setw(18) << "----------------" << std::setw(18) << "--------------"
         << std::endl;
     list.push_back(ost.str());
     ost.str("");

@@ -4,14 +4,12 @@ GTKFLAGS += `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 main: main.o controller.o view.o rental_site.o vehicle.o renter.o dialog.o
 	${CXX} ${CXXFLAGS} -o main main.o controller.o view.o rental_site.o vehicle.o renter.o dialog.o ${GTKFLAGS}
 
-test: test_vehicle test_rental_site test_view test_controller
+test: test_vehicle test_rental_site test_view 
 	@./test_vehicle 2> errors_vehicle.txt 
 	@./test_rental_site 2> errors_rental_site.txt
 	@./test_view 2> errors_view.txt
-	@./test_controller 2> errors_controller.txt 1> expected.txt
 
-test_controller: test_controller.cpp controller.o view.o rental_site.o vehicle.o renter.o
-	${CXX} ${CXXFLAGS} -o test_controller test_controller.cpp controller.o view.o rental_site.o vehicle.o renter.o ${GTKFLAGS}
+
 test_view: test_view.cpp view.o rental_site.o vehicle.o renter.o
 	${CXX} ${CXXFLAGS} -o test_view test_view.cpp view.o rental_site.o vehicle.o renter.o
 test_vehicle: test_vehicle.cpp vehicle.o renter.o
