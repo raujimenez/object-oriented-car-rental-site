@@ -200,7 +200,7 @@ void Controller::execute_cmd(int command)
     }
     else if (command == 9)
     {
-        Gtk::MessageDialog *help_dialog = new Gtk::MessageDialog(view.help());
+        Gtk::MessageDialog *help_dialog = new Gtk::MessageDialog(view.help(),true);
         help_dialog->run();
         help_dialog->close();
         delete help_dialog;
