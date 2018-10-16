@@ -6,21 +6,19 @@ View::View(Rental_Site rental_site) : _rental_site{rental_site} {}
 std::string View::main_menu()
 {
     std::ostringstream ost;
-    ost << "=======================================================" << std::endl
-        << "        Raul's Rental Vehicle Management System        " << std::endl
+    ost << "<span font_family='monospace'>=======================================================" << std::endl
+        << "  <big>Raul's Rental Vehicle Management System<sup>TM</sup></big>" << std::endl
         << "=======================================================" << std::endl
         << std::endl
-        << "Vehicles                              Renters          " << std::endl
-        << "-----------------                     ----------------" << std::endl
-        << "(1) Add Vehicle                      (5) Add Renter      " << std::endl
-        << "(2) List All Vehicles              (6) List Renters    " << std::endl
-        << "(3) Rent Vehicle                                       " << std::endl
-        << "(4) Return Vehicle                                     " << std::endl
+        << "<u><b>Vehicles</b></u>                              <u><b>Renters</b></u>          " << std::endl
+        << "<span fgcolor='#11aa33'>(1) Add Vehicle </span>                   <span fgcolor='#0000ff'>(5) Add Renter</span>      " << std::endl
+        << "<span fgcolor='#11aa33'>(2) List All Vehicles</span>              <span fgcolor='#0000ff'>(6) List Renters</span>    " << std::endl
+        << "<span fgcolor='#11aa33'>(3) Rent Vehicle</span>                                       " << std::endl
+        << "<span fgcolor='#11aa33'>(4) Return Vehicle</span>                                     " << std::endl
         << std::endl
-        << "Utility" << std::endl
-        << "-----------------" << std::endl
+        << "<u><b>Utility</b></u>" << std::endl
         << "(9) Help" << std::endl
-        << "(0) Exit" << std::endl
+        << "<span fgcolor='#ff0000'>(0) Exit </span></span>" << std::endl
         << std::endl;
     return ost.str();
 }
