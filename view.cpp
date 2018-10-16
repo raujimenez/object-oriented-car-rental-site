@@ -47,8 +47,8 @@ std::vector<std::string> View::list_of_renters()
 {
     std::ostringstream ost;
     std::vector<std::string> list;
-    ost << " " << std::setw(18) << "Name" << std::setw(18) << "License #" << std::setw(18) << "Phone #" << std::endl
-        << "         " << std::setw(18) << "----------------" << std::setw(18) << "----------------" << std::setw(18) << "--------------"
+    ost <<std::fixed<< " " << std::setw(18) << "Name" << std::setw(18) << "License #" << std::setw(18) << "Phone #" << std::endl
+
         << std::endl;
     list.push_back(ost.str());
     ost.str("");
