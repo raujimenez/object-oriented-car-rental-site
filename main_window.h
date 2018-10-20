@@ -19,17 +19,5 @@ class Main_window : public Gtk::Window
   private:
     void set_sticks();              // Update display, robot move
     Controller cont;
-    Gtk::Label *sticks;            // Display of sticks on game board
-    Gtk::Label *msg;               // Status message display
-    Gtk::ToolButton *button1;      // Button to select 1 stick
-    Gtk::Image *button1_on_image;  // Image when active
-    Gtk::Image *button1_off_image; // Image when inactive
-    Gtk::ToolButton *button2;      // Button to select 2 sticks
-    Gtk::Image *button2_on_image;
-    Gtk::Image *button2_off_image;
-    Gtk::ToolButton *button3; // Button to select 3 sticks
-    Gtk::Image *button3_on_image;
-    Gtk::Image *button3_off_image;
-    Gtk::ToggleToolButton *computer_player; // Button to enable robot
 };
 #endif
