@@ -9,15 +9,14 @@ class Main_window : public Gtk::Window
     virtual ~Main_window();
 
   protected:
-    void on_new_game_click();        // Create a new game
-    void on_button1_click();         // Select one stick from pile
-    void on_button2_click();         // Select two sticks from pile
-    void on_button3_click();         // Select three sticks from pile
-    void on_computer_player_click(); // Enable / disable computer player
+    void on_add_vehicle_click();
+    void on_rent_vehicle_click();
+    void on_return_vechicle_click();
+    void on_add_renter_click();
     void on_about_click();           // Display About dialog
     void on_quit_click();            // Exit the game
   private:
-    void set_sticks(); // Update display, robot move
+    void set_sticks();              // Update display, robot move
     Nim *nim;
     Gtk::Label *sticks;            // Display of sticks on game board
     Gtk::Label *msg;               // Status message display
