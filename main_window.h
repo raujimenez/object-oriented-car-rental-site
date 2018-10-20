@@ -1,25 +1,24 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 #include <gtkmm.h>
-#include "nim.h"
+#include "controller.h"
 class Main_window : public Gtk::Window
 {
   public:
     Main_window();
-    virtual ~Main_window();
 
   protected:
     void on_add_vehicle_click();
     void on_rent_vehicle_click();
-    void on_return_vechicle_click();
-    void on_add_renter_click();
+    void on_return_vehicle_click();
     void on_list_vehicles_click();
+    void on_add_renter_click();
     void on_list_renters_click();
     void on_help_click();
     void on_exit_click();
   private:
     void set_sticks();              // Update display, robot move
-    Nim *nim;
+    Controller cont;
     Gtk::Label *sticks;            // Display of sticks on game board
     Gtk::Label *msg;               // Status message display
     Gtk::ToolButton *button1;      // Button to select 1 stick

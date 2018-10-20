@@ -1,10 +1,9 @@
 #include <iostream>
-#include "controller.h"
-
+#include "main_window.h"
 int main(int argc, char *argv[])
 {
-    Gtk::Main kit(argc, argv);
-    Controller cont;
-    cont.cli();
-    return 0;
+    auto app = Gtk::Application::create(argc, argv, "edu.uta.cse1325.raulrent");
+    Main_window win;
+    win.set_title("rental vehicle management system");
+    return app->run(win);
 }
