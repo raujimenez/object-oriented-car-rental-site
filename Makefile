@@ -9,7 +9,6 @@ test: test_vehicle test_rental_site test_view
 	@./test_rental_site 2> errors_rental_site.txt
 	@./test_view 2> errors_view.txt
 
-
 test_view: test_view.cpp view.o rental_site.o vehicle.o renter.o
 	${CXX} ${CXXFLAGS} -o test_view test_view.cpp view.o rental_site.o vehicle.o renter.o
 test_vehicle: test_vehicle.cpp vehicle.o renter.o
@@ -33,5 +32,6 @@ dialog.o: dialog.cpp *.cpp
 	${CXX} ${CXXFLAGS} -c dialog.cpp ${GTKFLAGS}
 main_window.o: main_window.cpp *.h
 	${CXX} ${CXXFLAGS} -c main_window.cpp ${GTKFLAGS}
+	
 clean:
 	rm -rf errors_* *.o test_vehicle test_rental_site test_view test_controller main expected.txt
