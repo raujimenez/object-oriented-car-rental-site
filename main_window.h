@@ -13,8 +13,10 @@ class Main_window : public Gtk::Window
     void on_rent_vehicle_click();
     void on_return_vechicle_click();
     void on_add_renter_click();
-    void on_about_click();           // Display About dialog
-    void on_quit_click();            // Exit the game
+    void on_list_vehicles_click();
+    void on_list_renters_click();
+    void on_help_click();
+    void on_exit_click();
   private:
     void set_sticks();              // Update display, robot move
     Nim *nim;

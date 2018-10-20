@@ -17,41 +17,47 @@ Main_window::Main_window(){
     menuitem_file->set_submenu(*filemenu);
     //File: exit program
     Gtk::MenuItem *menuitem_exit = Gtk::manage(new Gtk::MenuItem("_Exit",true));
-    menuitem_exit->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_quit_click));
+    menuitem_exit->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_exit_click));
     filemenu->append(*menuitem_exit);
 
-    //Edit
-    Gtk::MenuItem *menuitem_edit = Gtk::manage(new Gtk::MenuItem("_Edit", true));
-    menubar->append(*menuitem_edit);
-    Gtk::Menu *editmenu = Gtk::manage(new Gtk::Menu());
-    menuitem_edit->set_submenu(*editmenu);
-    //Edit: add vehicle
-    Gtk::MenuItem *menuitem_addvehicle = Gtk::manage(new Gtk::MenuItem("_Add Vehicle", true));
+    //Vehicles
+    Gtk::MenuItem *menuitem_vehicle = Gtk::manage(new Gtk::MenuItem("_Vehicle", true));
+    menubar->append(*menuitem_vehicle);
+    Gtk::Menu *vehiclemenu = Gtk::manage(new Gtk::Menu());
+    menuitem_edit->set_submenu(*vehiclemenu);
+    //Vehicle: add vehicle
+    Gtk::MenuItem *menuitem_addvehicle = Gtk::manage(new Gtk::MenuItem("_New", true));
     menuitem_addvehicle->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_add_vehicle_click));
-    editmenu->append(*menuitem_addvehicle);
-    //Edit: rent vehicle
-    Gtk::MenuItem *menuitem_rentvehicle = Gtk::manage(new Gtk::MenuItem("_Rent Vehicle", true));
+    vehiclemenu->append(*menuitem_addvehicle);
+    //Vehicle: rent vehicle
+    Gtk::MenuItem *menuitem_rentvehicle = Gtk::manage(new Gtk::MenuItem("_Rent", true));
     menuitem_rentvehicle->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_rent_vehicle_click));
-    editmenu->append(*menuitem_rentvehicle);
-    //Edit: return vehicle
-    Gtk::MenuItem *menuitem_returnvehicle = Gtk::manage(new Gtk::MenuItem("_Return Vehicle", true));
+    vehiclemenu->append(*menuitem_rentvehicle);
+    //Vehicle: return vehicle
+    Gtk::MenuItem *menuitem_returnvehicle = Gtk::manage(new Gtk::MenuItem("_Return", true));
     menuitem_returnvehicle->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_return_vechicle_click));
-    editmenu->append(*menuitem_returnvehicle);
-    //Edit: add renter
-    Gtk::MenuItem *menuitem_addrenter = Gtk::manage(new Gtk::MenuItem("_Add Renter", true));
-    menuitem_addrenter->signal_activate().connect(sigc::mem(*this, &Main_window::on_add_renter_click)
+    vehiclemenu->append(*menuitem_returnvehicle);
+    //vehicle: List vehicles
+    Gtk::MenuItem *menuitem_listvehicles = Gtk::manage(new Gtk::MenuItem("_List Vehicles", true));
+    menuitem_listvehicles->signal_activate().connect(sigc::mem(*this, &Main_window::on_list_vehicles_click));
+    vehiclemenu->append(*menuitem_listvehicles);
 
-    //View
-    Gtk::MenuItem *menuitem_view = Gtk::manage(new Gtk::MenuItem("_View",true));
+    //Renter
+    Gtk::MenuItem *menuitem_view = Gtk::manage(new Gtk::MenuItem("_Renter",true));
     menubar->append(*menuitem_view);
-    Gtk::Menu *viewmenu = Gtk::manage(new Gtk::Menu());
-    menuitem_view->set_submenu(*viewmenu);
-    //View: List vehicles
-
-    //View: list renters
-
+    Gtk::Menu *rentermenu = Gtk::manage(new Gtk::Menu());
+    menuitem_view->set_submenu(*rentermenu);
+    //Renter: add renter
+    Gtk::MenuItem *menuitem_addrenter = Gtk::manage(new Gtk::MenuItem("_Add", true));
+    menuitem_addrenter->signal_activate().connect(sigc::mem(*this, &Main_window::on_add_renter_click)
+    rentermenu->append(*menuitem_addrenter);
+    //Renter: list renters
+    Gtl::MenuItem *menuitem_listrenters = Gtk::manage(new Gtk::MenuItem("_List", true));
+    menuitem_listrenters->signal_activate().connect(sigc::mem(*this, &Main_window::on_list_renters_click));
+    rentermenu->append(*menuitem_listrenters);
 
     //Help
-
-
+    Gtk::MenuItem *menuitem_help = Gtk::manage(new Gtk::MenuItem("_Help", true));
+    menubar->append(*menuitem_help);
+    menuitem_help->signal_activate().connect(sigc::mem(*this, &Main_window::on_help_click));
 }
