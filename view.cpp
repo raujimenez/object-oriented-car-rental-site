@@ -62,15 +62,15 @@ std::vector<std::string> View::list_of_renters()
 std::string View::help()
 {
     std::ostringstream ost;
-    ost << "<span font_family='monospace'><big><u>This program is to manage a vehicle rental place:</u></big>" << std::endl
-        << "\t<span fgcolor='#11aa33'>1)To add vehicles input 1 in the keyboard and then click ok" << std::endl
-        << "\t2)To list all vehicles input 2 in they keyboard and then click ok" << std::endl
-        << "\t3)To rent Vehicles out to a customer input 3 in the keyboard and then click ok" << std::endl
-        << "\t4)To check a vehicle back in to the lot input 4 in the keybaord and then click ok</span>" << std::endl
-        << "\t<span fgcolor='#0000ff'>5)To Add a renter to the database input 5 and click ok" << std::endl
-        << "\t6)To See all of the renter's in database input 6 and click ok</span>" << std::endl
-        << "\t<span fgcolor='#ff0000'>0)The program will run until you are prompted to input another command, in this case you can input 0 and then click ok to stop program</span>" << std::endl
-        << "<big><b>IMPORTANT: if you click cancel the program will <span fgcolor='#ff0000'>exit</span>.</b></big></span>" << std::endl;
+    ost << "<span font_family='monospace'><big><u>This program is to manage a vehicle rental place:</u></big><span fgcolor='#11aa33'>" << std::endl
+        << "Adding Vehicles:    Vehicles->New(in the menu bar), hit ok when done " << std::endl
+        << "Renting Vehicles:   Vehicles->Rent(in menu bar), hit ok when done" << std::endl
+        << "Returning Vehicles: Vehicles->Return(in menu bar), hit ok when done" << std::endl
+        << "List All Vehicles:  Vehicles->List(in menu bar), hit ok when done</span><span fgcolor='#0000ff'>" << std::endl
+        << "Adding Renters:     Renter->Add(in menu bar), hit ok when done" << std::endl
+        << "List All Renters:   Renter->List(in menu bar), hit ok when done</span><span fgcolor='#ff0000'>" << std::endl
+        << "Exit Program:       File->Exit(in Menu bar)</span>" << std::endl
+        << "<big><b>IMPORTANT: if you click cancel with an empty databse the program will <span fgcolor='#ff0000'>exit</span>.</b></big></span>" << std::endl;
     return ost.str();
 } //TODO figure out what to put here
 

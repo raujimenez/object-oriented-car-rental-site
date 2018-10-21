@@ -39,7 +39,7 @@ Main_window::Main_window()
     menuitem_returnvehicle->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_return_vehicle_click));
     vehiclemenu->append(*menuitem_returnvehicle);
     //vehicle: List vehicles
-    Gtk::MenuItem *menuitem_listvehicles = Gtk::manage(new Gtk::MenuItem("_List Vehicles", true));
+    Gtk::MenuItem *menuitem_listvehicles = Gtk::manage(new Gtk::MenuItem("_List", true));
     menuitem_listvehicles->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_list_vehicles_click));
     vehiclemenu->append(*menuitem_listvehicles);
 
