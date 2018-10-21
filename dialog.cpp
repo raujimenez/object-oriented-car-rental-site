@@ -12,8 +12,6 @@ std::string Dialogs::input(std::string msg, std::string title, std::string defau
     dialog->add_button("OK", 1);
     dialog->set_default_response(1);
 
-
-
     Gtk::Entry *entry = new Gtk::Entry{};
     entry->set_text(default_text);
     entry->set_max_length(50);
