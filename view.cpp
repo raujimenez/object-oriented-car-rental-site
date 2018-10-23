@@ -70,7 +70,8 @@ std::string View::help()
         << "Adding Renters:     Renter->Add(in menu bar), hit ok when done" << std::endl
         << "List All Renters:   Renter->List(in menu bar), hit ok when done</span><span fgcolor='#ff0000'>" << std::endl
         << "Exit Program:       File->Exit(in Menu bar)</span>" << std::endl
-        << "<big><b>IMPORTANT: if you click cancel with an empty databse the program will <span fgcolor='#ff0000'>exit</span>.</b></big></span>" << std::endl;
+        << "<big><b>IMPORTANT: if you click cancel with an empty databse the program will <span fgcolor='#ff0000'>exit</span>.</b></big></span>" << std::endl
+        << "All images adhere to the Gnu Free Documentation License (GFDL).</span>" << std::endl;
     return ost.str();
 } //TODO figure out what to put here
 
