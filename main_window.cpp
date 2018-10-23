@@ -65,6 +65,37 @@ Main_window::Main_window()
     Gtk::MenuItem *menuitem_documentation = Gtk::manage(new Gtk::MenuItem("_Documentation", true));
     menuitem_documentation->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_help_click));
     helpmenu->append(*menuitem_documentation);
+
+    //toolbar
+    Gtk::Toolbar *toolbar = Gtk::manage(new Gtk::Toolbar());
+    vbox->add(*toolbar);
+
+    //list vehicles
+    Gtk::ToolButton *listvehicle = Gtk::manage(new Gtk::ToolButton(Gtk::Stock::INDEX));
+    listvehicle->set_tooltip_markup("List of all vehicles");
+    listvehicle->signal_clicked().connect(sigc::mem_fun(*this, &Main_window::on_list_vehicles_click));
+    toolbar->append(*listvehicle);
+
+    //return vehicles
+    Gtk::ToolButton *returnvehicle = Gtk::manage(new Gtk::ToolButton(Gtk::Stock::UNDO));
+    returnvehicle->set_tooltip_markup("Return a Vehicle");
+    returnvehicle->signal_clicked().connect(sigc::mem_fun(*this, &Main_window::on_return_vehicle_click));
+    toolbar->append(*returnvehicle);
+    //add vehicle
+    Gtk::ToolButton *addvehicle = Gtk::manage(new Gtk::ToolButton(Gtk::Stock::ADD));
+    addvehicle->set_tooltip_markup("Add a vehicle");
+    addvehicle->signal_clicked().connect(sigc::mem_fun(*this, &Main_window::on_add_vehicle_click));
+    toolbar->append(*addvehicle);
+    //rent vehicles
+    Gtk::ToolButton *rentvehicle = Gtk::manage(new Gtk::ToolButton(Gtk::Stock::REDO));
+    rentvehicle->set_tooltip_markup("Rent a vehicle");
+    rentvehicle->signal_clicked().connect(sigc::mem_fun(*this, &Main_window::on_rent_vehicle_click));
+    toolbar->append(*rentvehicle);
+    // get help
+    Gtk::ToolButton *gethelp = Gtk::manage(new Gtk::ToolButton(Gtk::Stock::HELP));
+    gethelp->set_tooltip_markup("How to use the program");
+    gethelp->signal_clicked().connect(sigc::mem_fun(*this, &Main_window::on_help_click));
+    toolbar->append(*gethelp);
     vbox->show_all();
 }
 

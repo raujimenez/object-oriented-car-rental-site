@@ -105,9 +105,9 @@ void Controller::execute_cmd(int command)
             Gtk::Main::iteration();
         make = e_make.get_text();
         model = e_model.get_text();
-        year = std::stoi(e_year.get_text());
         try
         {
+            year = std::stoi(e_year.get_text());
             if (result == 1)
                 _rental_site.add_vehicle(Vehicle(year, make, model, body_style));
         }
