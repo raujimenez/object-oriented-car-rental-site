@@ -75,31 +75,31 @@ void Controller::execute_cmd(int command)
         dialog->add_button("Cancel", 0);
         dialog->add_button("OK", 1);
         dialog->show_all();
+        result = dialog->run();
 
         //conversion to bodystyle
         body_choice = c_body_style.get_active_row_number();
         switch (body_choice)
         {
-        case (1):
+        case (0):
             body_style = Body_style::SEDAN;
             break;
-        case (2):
+        case (1):
             body_style = Body_style::HATCHBACK;
             break;
-        case (3):
+        case (2):
             body_style = Body_style::MINIVAN;
             break;
-        case (4):
+        case (3):
             body_style = Body_style::TRUCK;
+            break;
+        case (4):
+            body_style = Body_style::CROSSOVER;
             break;
         case (5):
             body_style = Body_style::SUV;
             break;
-        case (6):
-            body_style = Body_style::CROSSOVER;
-            break;
         }
-        result = dialog->run();
         dialog->close();
         while (Gtk::Main::events_pending())
             Gtk::Main::iteration();
@@ -180,7 +180,7 @@ void Controller::execute_cmd(int command)
 
         try
         {
-            if(result == 1) 
+            if (result == 1)
                 _rental_site.rent_vehicle(vehicle_to_rent, _rental_site.renters()[renter_val - 1]);
         }
         catch (std::exception &e)
